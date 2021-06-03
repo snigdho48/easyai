@@ -1,0 +1,160 @@
+.hold{
+    display: flex;
+    
+}
+
+.logo-nav{
+  display: flex;
+  justify-content: space-between;
+}
+  
+  .sidebar-custom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 60px;!important;
+    overflow: hidden;
+    transition: all 0.3s ease-out !important;
+  }
+
+  /* sidebar-cus.sidebar-custom open */
+  .sidebar-custom.open {
+    width: 300px;!important;
+  }
+  .sidebar-custom.open .menu-text {
+    display: block;
+    margin-left: 10px;
+  }
+  .sidebar-custom.open .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .sidebar-custom.open .menu-item a {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .sidebar-custom.open .menu-item i {
+    margin: 15px;
+  }
+
+  .sidebar-custom.open .expand-button i {
+    transform: rotate(-180deg);
+  }
+
+  .menu-text {
+    display: none;
+    color: #fff;
+    /* margin-left: 5px ; */
+  }
+  .menu-item {
+    position: relative;
+    display: flex;
+    margin: 5px 0;
+    height: 30px;
+    width: 100%;
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+  .menu-item:hover {
+    transform: scale(1.2);
+  }
+
+  .hold-2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dashboard-flex{
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  /* expand icon */
+  .expand-button {
+    color: #fff;
+  }
+
+  .navbar-style{
+      display: flex;
+      justify-content: space-between;
+      flex: auto;
+  }
+
+  .heading-nav{
+      display: flex;
+      justify-content: space-between ;
+      flex: 1;
+  }
+
+
+
+  @media screen and (max-width: 767px) {
+
+
+    .navbar-style{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+    }
+    .menu-item {
+        display: none;
+
+    }
+
+    .menu-text{
+      margin-left: 20px;
+    }
+
+    .hold-1{
+        position: absolute;
+
+    }
+
+
+
+    .nav-link{
+      display: flex !important;
+      flex-direction: column-reverse !important ;
+    }
+
+    .sidebar-custom{
+        background-color: inherit !important;
+        transition: all 0.3s ease-out !important;
+        margin: 0px;
+        width: 0px;
+    }
+
+    .sidebar-custom.open{
+
+        display: block !important;
+        background-color: #343a40!important;
+        z-index: 99999;
+        width: 300px; !important;
+    }
+
+    .sidebar-custom.open .menu-text {
+      display: block;
+      margin-left: 30px;
+    }
+
+    .sidebar-custom.open .menu-item a {
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+      margin-top: auto;
+    }
+    
+
+  }
+
+  
+
+  

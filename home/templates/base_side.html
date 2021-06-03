@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block sidemenu %}
+
+<div class="hold bg">
+    <div class=" hold-1 sidebar-custom bg-dark" style="height:auto">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item menu-item">
+                    <a class="nav-link active" href="#">
+                        <span data-feather="home"></span>
+                        <p class="menu-text">Dashboard</p> <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="file"></span>
+                        <p class="menu-text"> Orders </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="shopping-cart"></span>
+                        <p class="menu-text"> Products </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="users"></span>
+                        <p class="menu-text">Customers </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="bar-chart-2"></span>
+                        <p class="menu-text"> Reports </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="layers"></span>
+                        <p class="menu-text">Integrations </p>
+                    </a>
+                </li>
+            </ul>
+
+            <h6 class="sidebar-heading  d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span class="menu-text">Saved reports</span>
+                <a class="d-flex align-items-center text-muted" href="#">
+                    <span class="menu-item" data-feather="plus-circle"></span>
+                </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="{% url 'analytics:result' %}">
+                        <span data-feather="file-text"></span>
+                        <p class="menu-text"> Simple Data </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="file-text"></span>
+                        <p class="menu-text">Charts </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="file-text"></span>
+                        <p class="menu-text">
+                            Social engagement </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="file-text"></span>
+                        <p class="menu-text">
+                            Year-end sale</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <main class="hold-2">
+        <div class="container-fluid">
+        <div class="d-flex flex-wrap dashboard-flex flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="form-group">
+                        <input type="file" id="myFile" name="filename">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+
+                <div class="btn-group mr-2">
+                    <button class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button class="btn btn-sm btn-outline-secondary">Export</button>
+                </div>
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" style="visibility:visible">
+                    <span data-feather="calendar"></span>
+                    This week
+                </button>
+            </div>
+        </div>
+        
+        
+        {% block content %}
+        {% endblock content %}
+        </div>
+    </main>
+</div>
+
+
+{% endblock sidemenu %}

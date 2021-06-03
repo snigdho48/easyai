@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+<!--
+    After successful login, user will be redirected to analytics:home url.
+    This is configured in easyai settings.py as LOGIN_REDIRECT_URL='analytics:home'
+-->
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white"> 
+                    <h5 class="card-title">Sign In</h5>
+                    <h6 class="card-subtitle mb-2 ">Enter your email and password to login!</h6>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">Username:</label>
+                            {{ form.username }}
+                            {{ form.username.errors }}
+
+                        </div>
+                        <div class="form-group">
+
+                            <label for="{{ form.password.id_for_label }}">Password:</label>
+                            {{ form.password }}
+                            {{ form.password.errors }}
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

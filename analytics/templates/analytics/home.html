@@ -1,0 +1,390 @@
+{% extends 'base_side.html' %}
+
+
+{% block headcss %}
+
+
+{% endblock headcss %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <h2>Raw table data</h2>
+    {% if data_rows %}
+
+
+        <div class="container1">
+            <form action="" method="GET" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Show:</label>
+                    <select id="disp1" name="disp1" onchange="selectedValue(this)">
+                        <option value="Top5" {% if disp1 == "Top5" %} selected {% endif %}>Top5</option>
+                        <option value="Top10" {% if disp1 == "Top10" %} selected {% endif %}>Top10</option>
+                        <option value="Bottom5" {% if disp1 == "Bottom5" %} selected {% endif %}>Bottom5</option>
+                        <option value="ShowAll" {% if disp1 == "ShowAll" %} selected {% endif %}>ShowAll</option>
+                    </select>
+
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-6">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </form>
+            <br/>
+
+
+            <hr>
+            <br/>
+            <link rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <style>
+
+
+                .custom-checkbox input[type="checkbox"],
+                .custom-checkbox .checked {
+                    display: none;
+                }
+
+                .custom-checkbox input[type="checkbox"]:checked ~ .checked {
+                    display: inline-block;
+                }
+
+                .custom-checkbox input[type="checkbox"]:checked ~ .unchecked {
+                    display: none;
+                }
+            </style>
+
+
+        </div>
+        <div>
+            <div class="d-flex justify-content-end my container1">
+
+                <div class="dropdown">
+                    <button class="dropbtn">columns <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+
+
+                        {% for col in columns %}
+                            {% if '_count' in col %}
+                                <label class="custom-checkbox">
+                                    <input
+                                            type="checkbox"
+                                            data-column="{{ forloop.counter }}"
+                                            class="toggle-vis"
+                                            data-label-text="{{ col }}"
+                                            checked/>
+                                    <i class="fa fa-fw fa fa fa-eye checked"></i>
+                                    <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i>{{ col }}</label><br>
+
+                            {% else %}
+                                <label class="custom-checkbox">
+                                    <input
+                                            type="checkbox"
+                                            data-column="{{ forloop.counter }}"
+                                            class="toggle-vis"
+                                            data-label-text="{{ col }}"
+                                            checked/>
+                                    <i class="fa fa-fw fa fa fa-eye checked"></i>
+                                    <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i>{{ col }}</label><br>
+
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="container1 d-flex con m-0 p-0">
+
+                <div class="table_cont ">
+
+
+                    <table id="example" class="footable table " data-paging="true" data-filtering=true
+                           data-filter-position="right" data-paging-size="9" data-sorting="true">
+                        <thead class="thead-dark">
+                        <!-- For the footable sorting to work, data-type should be set to number for those which the column is numeric so that it can be sorted properly
+                            This is not tohe proper way since user will have to modify the csv to add _count in the column
+                            This is to be done in views.py result definition to check the columns is all numeric, and if do, change the column name to append _count to it
+                          -->
+                        <!-- <tr>
+            {% for col in columns %}
+              {% if '_count' in col %}
+                <th scope="col" data-type="number" data-hide="phone,tablet">{{col}}</th>
+              {% else %}
+                <th scope="col">{{col}} </th>
+              {% endif %}
+            {% endfor %}
+            </tr> -->
+                        <tr>
+                            {% for col in columns %}
+                                {% if '_count' in col %}
+                                    <th scope="col" data-type="number" data-hide="phone,tablet">{{ col }}
+
+                                    </th>
+                                {% else %}
+                                    <th scope="col">{{ col }}
+
+                                    </th>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+
+                        <!-- {% for col in columns %}
+{% if '_count' in col %}
+<label class="custom-checkbox">
+<input 
+type="checkbox" 
+data-column="{{ forloop.counter }}" 
+class="toggle-vis" 
+data-label-text="{{col}}" 
+checked/>
+<i class="fa fa-fw fa fa fa-eye checked"></i>
+    <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i>{{col}}</label>
+
+{% else %}
+<label class="custom-checkbox">
+<input 
+type="checkbox" 
+data-column="{{ forloop.counter }}" 
+class="toggle-vis" 
+data-label-text="{{col}}" 
+checked/>
+<i class="fa fa-fw fa fa fa-eye checked"></i>
+    <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i>{{col}}</label>
+
+{% endif %}
+{% endfor %} -->
+                        </thead>
+
+                        <tbody>
+
+
+                        <!---->
+
+                        <tr>
+                            {% for col in columns %}
+                                {% if '_count' in col %}
+                                    <th scope="col" data-type="number" data-hide="phone,tablet">
+                                        <label class="custom-checkbox">
+                                            <input
+                                                    type="checkbox"
+                                                    data-column="{{ forloop.counter }}"
+                                                    class="toggle-vis"
+                                                    data-label-text="{{ col }}"
+                                                    checked/>
+                                            <i class="fa fa-fw fa fa fa-eye checked"></i>
+                                            <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i></label>
+                                    </th>
+                                {% else %}
+                                    <th scope="col">
+                                        <label class="custom-checkbox">
+                                            <input
+                                                    type="checkbox"
+                                                    data-column="{{ forloop.counter }}"
+                                                    class="toggle-vis"
+                                                    data-label-text="{{ col }}"
+                                                    checked/>
+                                            <i class="fa fa-fw fa fa fa-eye checked"></i>
+                                            <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i></label>
+                                    </th>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+
+
+                        <!---->
+                        {% for data_row in data_rows %}
+                            <tr>
+                                {% for attr in data_row %}
+                                    <td>{{ attr }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+
+
+                    <script>
+                        $(function () {
+                            $('html').on('change', '.toggle-vis', function () {
+
+                                let id = $(this).attr('data-column')
+                                if ($(this).is(':checked')) {
+                                    $('tr').each(function () {
+                                        $(this).find('td').eq(id - 1).show();
+                                        $(this).find('th').eq(id - 1).show();
+                                    })
+                                } else {
+                                    $('tr').each(function () {
+                                        $(this).find('td').eq(id - 1).hide();
+                                        $(this).find('th').eq(id - 1).hide();
+                                    })
+                                }
+                            })
+
+                        });
+                    </script>
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+        <style>
+            .table_cont {
+                width: 100vw;
+                height: auto;
+                overflow-y: hidden;
+                position: relative;
+
+
+            }
+
+            .container1 {
+                width: 100%;
+                padding-right: 0px;
+                padding-left: 15px;
+                margin-right: auto;
+                margin-left: auto
+            }
+
+            .con {
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+
+            .dropbtn {
+                background-color: #e6e6e6;
+                color: rgb(99, 99, 99);
+                padding: 14px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            {#margin-left: 70px;#} margin-bottom: 6px;
+                /* position: absolute;
+                  right: 0; */
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            {#margin-left: 1100px;#} padding: 10px;
+
+            }
+
+            .sidebar-custom.open {
+                display: block !important;
+                background-color: #343a40 !important;
+                z-index: 99999;
+                width: 300px;
+            !important;
+
+            .con {
+                display: flex;
+                justify-content: end;
+            }
+
+            }
+
+
+            @media (min-width: 767px) {
+                .my {
+                    width: 70vw;
+                }
+
+                .table_cont {
+                    width: 70vw;
+                    height: auto;
+                    overflow-y: hidden;
+                    position: relative;
+
+
+                }
+
+            }
+
+            @media (min-width: 960px) {
+                .my {
+                    width: 76vw;
+                }
+
+                .table_cont {
+                    width: 76vw;
+                    height: auto;
+                    overflow-y: hidden;
+                    position: relative;
+
+
+                }
+
+            }
+
+            @media (min-width: 1200px) {
+                .my {
+                    width: 81vw;
+                }
+
+                .table_cont {
+                    width: 81vw;
+                    height: auto;
+                    overflow-y: hidden;
+                    position: relative;
+
+
+                }
+            }
+
+            svg {
+                margin-top: 0;
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .dropdown:hover .dropbtn {
+                background-color: #8a8a8a;
+            }
+
+            .input-group .open ul {
+                height: 250px !important;
+                overflow: scroll !important;
+            }
+
+            .container1 .dropdown .dropdown-content {
+                height: 250px !important;
+                overflow: scroll !important;
+            }
+
+
+        </style>
+
+
+    {% endif %}
+{% endblock content %}
