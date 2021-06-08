@@ -56,6 +56,9 @@
                 .custom-checkbox input[type="checkbox"]:checked ~ .unchecked {
                     display: none;
                 }
+                .first:first-child {
+                    display:none;
+                }
             </style>
 
 
@@ -70,7 +73,8 @@
 
                         {% for col in columns %}
                             {% if '_count' in col %}
-                                <label class="custom-checkbox">
+
+                                <label class="custom-checkbox first">
                                     <input
                                             type="checkbox"
                                             data-column="{{ forloop.counter }}"
@@ -81,7 +85,7 @@
                                     <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i>{{ col }}</label><br>
 
                             {% else %}
-                                <label class="custom-checkbox">
+                                <label class="custom-checkbox first">
                                     <input
                                             type="checkbox"
                                             data-column="{{ forloop.counter }}"
@@ -98,13 +102,13 @@
                     </div>
                 </div>
             </div>
-            <div class="container1 d-flex con m-0 p-0">
+            <div class="container1 d-flex con m-0 p-0" >
 
                 <div class="table_cont ">
 
 
-                    <table id="example" class="footable table " data-paging="true" data-filtering=true
-                           data-filter-position="right" data-paging-size="9" data-sorting="true">
+                    <table id="example" class="footable table" data-paging="true" data-filtering=true
+                           data-filter-position="right" data-paging-size="9" data-sorting="true" style="margin-bottom: 100px">
                         <thead class="thead-dark">
                         <!-- For the footable sorting to work, data-type should be set to number for those which the column is numeric so that it can be sorted properly
                             This is not tohe proper way since user will have to modify the csv to add _count in the column
@@ -163,37 +167,7 @@ checked/>
                         <tbody>
 
 
-                        <!---->
 
-                        <tr>
-                            {% for col in columns %}
-                                {% if '_count' in col %}
-                                    <th scope="col" data-type="number" data-hide="phone,tablet">
-                                        <label class="custom-checkbox">
-                                            <input
-                                                    type="checkbox"
-                                                    data-column="{{ forloop.counter }}"
-                                                    class="toggle-vis"
-                                                    data-label-text="{{ col }}"
-                                                    checked/>
-                                            <i class="fa fa-fw fa fa fa-eye checked"></i>
-                                            <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i></label>
-                                    </th>
-                                {% else %}
-                                    <th scope="col">
-                                        <label class="custom-checkbox">
-                                            <input
-                                                    type="checkbox"
-                                                    data-column="{{ forloop.counter }}"
-                                                    class="toggle-vis"
-                                                    data-label-text="{{ col }}"
-                                                    checked/>
-                                            <i class="fa fa-fw fa fa fa-eye checked"></i>
-                                            <i class="fa fa-fw fa fa fa-eye-slash unchecked "></i></label>
-                                    </th>
-                                {% endif %}
-                            {% endfor %}
-                        </tr>
 
 
                         <!---->
@@ -227,6 +201,13 @@ checked/>
                                 }
                             })
 
+                        });
+                        jQuery(function ($) {
+                            $('#modal-example-1').footable({
+                                "useParentWidth": true,
+                                "columns": $.get('columns.json'),
+                                "rows": $.get('rows.json')
+                            });
                         });
                     </script>
 
@@ -308,7 +289,7 @@ checked/>
                 }
 
                 .table_cont {
-                    width: 70vw;
+                    width: 90vw;
                     height: auto;
                     overflow-y: hidden;
                     position: relative;
@@ -336,11 +317,11 @@ checked/>
 
             @media (min-width: 1200px) {
                 .my {
-                    width: 81vw;
+                    width: 90vw;
                 }
 
                 .table_cont {
-                    width: 81vw;
+                    width: 90vw;
                     height: auto;
                     overflow-y: hidden;
                     position: relative;
@@ -380,6 +361,7 @@ checked/>
             .container1 .dropdown .dropdown-content {
                 height: 250px !important;
                 overflow: scroll !important;
+                margin-bottom: 15px;
             }
 
 

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0521d999-92e4-4a99-a54b-b8eeaa8b28a1" name="Default Changelist" comment="" />
+    <list default="true" id="0521d999-92e4-4a99-a54b-b8eeaa8b28a1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/templates/analytics/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/templates/analytics/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +15,9 @@
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1t1Ezbr469X8Jfkgbp8bLAqSsAo" />
   <component name="ProjectViewState">
@@ -18,8 +27,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pi4/easyai" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -70,6 +83,9 @@
       <workItem from="1622722793787" duration="375000" />
       <workItem from="1622723171995" duration="599000" />
       <workItem from="1622724299421" duration="3515000" />
+      <workItem from="1622736112118" duration="1403000" />
+      <workItem from="1622784999316" duration="30000" />
+      <workItem from="1623178484125" duration="9351000" />
     </task>
     <servers />
   </component>
@@ -77,10 +93,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="466" y="142" width="424" height="493" key="FileChooserDialogImpl" timestamp="1622724481240">
+    <state x="466" y="142" width="424" height="493" key="FileChooserDialogImpl" timestamp="1622785026174">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="466" y="142" width="424" height="493" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1622724481240" />
+    <state x="466" y="142" width="424" height="493" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1622785026174" />
     <state x="187" y="19" width="992" height="739" key="SettingsEditor" timestamp="1622044989291">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
