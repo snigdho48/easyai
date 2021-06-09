@@ -56,15 +56,16 @@
                 .custom-checkbox input[type="checkbox"]:checked ~ .unchecked {
                     display: none;
                 }
+
                 .first:first-child {
-                    display:none;
+                    display: none;
                 }
             </style>
 
 
         </div>
         <div>
-            <div class="d-flex justify-content-end my container1">
+            <div class="d-flex justify-content-end my container1" id="my-tab" style="width:90vw">
 
                 <div class="dropdown">
                     <button class="dropbtn">columns <i class="fas fa-chevron-down"></i></button>
@@ -102,13 +103,14 @@
                     </div>
                 </div>
             </div>
-            <div class="container1 d-flex con m-0 p-0" >
+            <div class="container1 d-flex con m-0 p-0">
 
-                <div class="table_cont ">
+                <div class="table_cont " id="tab">
 
 
                     <table id="example" class="footable table" data-paging="true" data-filtering=true
-                           data-filter-position="right" data-paging-size="9" data-sorting="true" style="margin-bottom: 100px">
+                           data-filter-position="right" data-paging-size="9" data-sorting="true"
+                           style="margin-bottom: 100px">
                         <thead class="thead-dark">
                         <!-- For the footable sorting to work, data-type should be set to number for those which the column is numeric so that it can be sorted properly
                             This is not tohe proper way since user will have to modify the csv to add _count in the column
@@ -167,9 +169,6 @@ checked/>
                         <tbody>
 
 
-
-
-
                         <!---->
                         {% for data_row in data_rows %}
                             <tr>
@@ -202,13 +201,25 @@ checked/>
                             })
 
                         });
-                        jQuery(function ($) {
-                            $('#modal-example-1').footable({
-                                "useParentWidth": true,
-                                "columns": $.get('columns.json'),
-                                "rows": $.get('rows.json')
-                            });
+
+
+                        $("nav div a").click(function () {
+                            if ($('#tab').hasClass('w-70') && ($(window).width() >767)) {
+                                $("#tab").removeClass('w-70');
+                                $("#my-tab").removeClass('w-70');
+
+                            }
+                            else{
+                                $("#tab").addClass('w-70');
+                                $("#my-tab").addClass('w-70');
+                            }
+                            if ($(window).width() < 767){
+                                $("#tab").removeClass('w-70');
+                                $("#my-tab").removeClass('w-70');
+                            }
                         });
+
+
                     </script>
 
 
@@ -217,14 +228,7 @@ checked/>
         </div>
         </div>
         <style>
-            .table_cont {
-                width: 100vw;
-                height: auto;
-                overflow-y: hidden;
-                position: relative;
 
-
-            }
 
             .container1 {
                 width: 100%;
@@ -272,63 +276,37 @@ checked/>
                 display: block !important;
                 background-color: #343a40 !important;
                 z-index: 99999;
-                width: 300px;
-            !important;
+                width: 300px !important;
 
-            .con {
-                display: flex;
-                justify-content: end;
-            }
-
-            }
-
-
-            @media (min-width: 767px) {
-                .my {
-                    width: 70vw;
-                }
-
-                .table_cont {
-                    width: 90vw;
-                    height: auto;
-                    overflow-y: hidden;
-                    position: relative;
-
-
-                }
+            {#.con {#}
+            {#    display: flex;#}
+            {#    justify-content: end;#}
+            {
+            #}#}
 
             }
 
-            @media (min-width: 960px) {
-                .my {
-                    width: 76vw;
-                }
 
-                .table_cont {
-                    width: 76vw;
-                    height: auto;
-                    overflow-y: hidden;
-                    position: relative;
+            .my {
+                width: 90vw;
+            }
 
+            .table_cont {
+                width: 90vw;
+                height: auto;
+                overflow-y: hidden;
+                position: relative;
 
-                }
 
             }
 
-            @media (min-width: 1200px) {
-                .my {
-                    width: 90vw;
-                }
-
-                .table_cont {
-                    width: 90vw;
-                    height: auto;
-                    overflow-y: hidden;
-                    position: relative;
+            .w-70 {
+                width: 75vw !important;
 
 
-                }
+
             }
+
 
             svg {
                 margin-top: 0;
